@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_app_ui/pages/forms/signin.dart';
 import 'package:todo_app_ui/pages/forms/signup.dart';
 import 'package:todo_app_ui/pages/get_started/getStarted.dart';
-import 'package:todo_app_ui/pages/landing/firstScreen.dart';
+import 'package:todo_app_ui/pages/landing/firstScreen1.dart';
 import 'package:todo_app_ui/pages/onboarding/onboarding_1.dart';
 import 'package:todo_app_ui/pages/onboarding/onboarding_2.dart';
 import 'package:todo_app_ui/pages/onboarding/onboarding_3.dart';

@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_ui/utils/device_height.dart';
+import 'package:todo_app_ui/utils/device_width.dart';
 
-class Lifetrack_clipper extends CustomClipper<Path> {
+class LifetrackClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    Path path = Path();
-    final double _xScaling = size.width ;
-    final double _yScaling = size.height;
-    path.lineTo(298 * _xScaling, 186 * _yScaling);
-    path.cubicTo(
-      451 * _xScaling,
-      461 * _yScaling,
-      576 * _xScaling,
-      417 * _yScaling,
-      673 * _xScaling,
-      350 * _yScaling,
-    );
+    Path path = new Path();
+
+    path.lineTo(0, size.height - 150);
+    // path.lineTo(size.width, size.height);
+    path.quadraticBezierTo(
+        size.width - 170, size.height + 50, size.width, size.height - 75);
+    path.lineTo(size.width, 0);
+    path.close();
+
     return path;
+    // TODO: implement getClip
+    // throw UnimplementedError();
   }
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
     throw UnimplementedError();
   }
 }
-

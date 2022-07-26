@@ -1,61 +1,99 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:todo_app_ui/components/custome_clipPath.dart';
+// import 'package:flutter/material.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:todo_app_ui/components/clipper_container.dart';
+// import 'package:todo_app_ui/components/custome_clipPath.dart';
+// import 'package:todo_app_ui/utils/bgcolor.dart';
+// import 'package:todo_app_ui/utils/device_height.dart';
+// import 'package:todo_app_ui/utils/device_width.dart';
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({Key? key}) : super(key: key);
+// class FirstScreen extends StatelessWidget {
+//   const FirstScreen({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+//   @override
+// Widget build(BuildContext context) {
+// double height =10.00print('device height: ${deviceWidth(context)}');
+// return Scaffold(
+// body: Stack(children: [
+//   ClipPath(
+//     child: Container(color: Color(0XFFFF535E)),
+//     clipper: Lifetrack_clipper(),
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        children: [],
-      ),
-    );
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//   )
+// ]),
+// body: Column(
+//   crossAxisAlignment: CrossAxisAlignment.center,
+//   children: [
+//     Container(
+//       width: deviceWidth(context),
+//       height: deviceHeight(context) * .65,
+//       child: Stack(
+//         children: [
+//         ],
+//       ),
+//     ),
+//     Container(
+//       color: Colors.white,
+//       height: deviceHeight(context) * .30,
+//       alignment: Alignment.center,
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         children: [
+//           Column(
+//             children: [
+//               Container(
+//                 margin: EdgeInsets.fromLTRB(0, 60, 0, 0.0),
+//                 child: SizedBox(
+//                   width: deviceWidth(context) * .7,
+//                   child: ElevatedButton(
+//                     onPressed: () {},
+//                     style: ElevatedButton.styleFrom(
+//                         padding: EdgeInsets.all(18),
+//                         primary: Color(0XFFFF535E),
+//                         shape: RoundedRectangleBorder(
+//                           borderRadius: BorderRadius.circular(30.0),
+//                         )),
+//                     child: Text(
+//                       'Sign up',
+//                       style: TextStyle(
+//                           fontSize: 14, fontWeight: FontWeight.w600),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               Container(
+//                 margin: EdgeInsets.fromLTRB(0, 15, 0, 0.0),
+//                 child: SizedBox(
+//                     width: deviceWidth(context) * .7,
+//                     child: GestureDetector(
+//                       child: TextButton(
+//                         onPressed: () {},
+//                         style: TextButton.styleFrom(
+//                             primary: Color(0XFFFF535E),
+//                             padding: EdgeInsets.all(18),
+//                             shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(30.0),
+//                             )),
+//                         child: Text(
+//                           'Sign in',
+//                           style: TextStyle(
+//                             fontSize: 14,
+//                             fontWeight: FontWeight.w600,
+//                             color: Color(0XFFFF535E),
+//                           ),
+//                         ),
+//                       ),
+//                     )),
+//               )
+//             ],
+//           ),
+//         ],
+//       ),
+//     )
+//   ],
+// ),
+//     );
+//   }
+// }
 
 //     return Stack(
 //       children: [
@@ -71,7 +109,7 @@ class FirstScreen extends StatelessWidget {
 //               // height: height * 0.45,
 //               decoration: BoxDecoration(
 //                 color: Color(0xFFFF4F5A),
-//                 // borderRadius: BorderDirectional.lerp(10, 12, 10),
+//                 // borderRadius: BorderDirectional.lerp(10.0, 12, 10.0),
 //               ),
 //               child: Center(
 //                 child:
@@ -102,7 +140,7 @@ class FirstScreen extends StatelessWidget {
 //                 child: Column(
 //                   children: [
 //                     Container(
-//                       margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+//                       margin: EdgeInsets.fromLTRB(0, 20, 0, 10.0),
 //                       child: SizedBox(
 //                         width: width * .8,
 //                         child: ElevatedButton(
@@ -124,7 +162,7 @@ class FirstScreen extends StatelessWidget {
 //                       ),
 //                     ),
 //                     Container(
-//                       margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+//                       margin: EdgeInsets.fromLTRB(0, 10.0, 0, 0),
 //                       width: width * 0.8,
 //                       decoration: BoxDecoration(color: Colors.white),
 //                       child: TextButton(
@@ -152,6 +190,97 @@ class FirstScreen extends StatelessWidget {
 //           ],
 //         )
 //       ],
+//     );
+//   }
+// }
+
+/*
+
+ child: Container(
+                      width: deviceWidth(context),
+                      height:  15.0,
+                      alignment: Alignment.center,
+                      color: mainColor(),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Row(children: [
+                          Icon(
+                            Icons.check_box_outlined,
+                            size: 35,
+                          ),
+                          Text(
+                            'lifetrack',
+                            style: GoogleFonts.roboto(
+                                textStyle:
+                                    Theme.of(context).textTheme.displayMedium,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontSize: 35),
+                          )
+                        ]),
+                      ),
+                    ),
+*/
+
+// class FirstScreen extends StatelessWidget {
+//   const FirstScreen({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Stack(
+//         children: [
+//           Container(
+//             width: deviceWidth(context),
+//             height: deviceHeight(context),
+//             color: Colors.white,
+//             child: Column(
+//               children: [
+//                 Container(
+//                   margin: EdgeInsets.fromLTRB(0, 20, 0, 10.0),
+//                   width: deviceWidth(context)*.7,
+//                   child: ElevatedButton(
+//                     onPressed: () {},
+//                     child: Text(
+//                       'Sign up',
+//                       style: TextStyle(
+//                         fontSize: 16,
+//                         fontWeight: FontWeight.w900,
+//                       ),
+//                     ),
+//                     style:ElevatedButton.styleFrom(
+//                        padding: EdgeInsets.all(500),
+//                         primary: Color(0XFFFF535E),
+//                         shape: RoundedRectangleBorder(
+//                           borderRadius: BorderRadius.circular(30.0),
+//                     ),
+//                   ),
+//                 )
+//                     Container(
+//                       margin: EdgeInsets.fromLTRB(0, 20, 0, 10.0),
+//                       child: SizedBox(
+//                         width: width * .8,
+//                         child: ElevatedButton(
+//                           onPressed: () {},
+//                           style: ButtonStyle(
+//                             backgroundColor: MaterialStateProperty.all<Color>(
+//                                 Color(0xFFFF4F5A)),
+//                             shape: MaterialStateProperty.all<
+//                                     RoundedRectangleBorder>(
+//                                 RoundedRectangleBorder(
+//                                     borderRadius: BorderRadius.circular(30))),
+//                           ),
+//                           child: Text(
+//                             'Sign up',
+//                             style: TextStyle(
+//                                 fontSize: 16, fontWeight: FontWeight.w900),
+//                           ),
+// //                         ),
+//               ],
+//             ),
+//           )
+//         ],
+//       ),
 //     );
 //   }
 // }
