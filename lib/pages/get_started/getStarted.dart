@@ -5,8 +5,12 @@ class GetStarted extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Welcome aboard Adam!'),
+    return Container(
+      decoration: BoxDecoration(),
+      child: Center(
+        
+        child: Text('Welcome aboard Adam!'),
+      ),
     );
   }
 }

@@ -7,6 +7,7 @@ class Signin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text('Signin page works'),
+      
     );
   }
 }

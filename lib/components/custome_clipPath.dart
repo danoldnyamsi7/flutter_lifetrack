@@ -5,7 +5,7 @@ import 'package:todo_app_ui/utils/device_width.dart';
 class LifetrackClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    Path path = new Path();
+    Path path = Path();
 
     path.lineTo(0, size.height - 150);
     // path.lineTo(size.width, size.height);
@@ -25,3 +25,4 @@ class LifetrackClipper extends CustomClipper<Path> {
     throw UnimplementedError();
   }
 }
+

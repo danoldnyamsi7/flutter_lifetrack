@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app_ui/components/clipper_container.dart';
 import 'package:todo_app_ui/components/custome_clipPath.dart';
+import 'package:todo_app_ui/components/sign_btns.dart';
 import 'package:todo_app_ui/utils/bgcolor.dart';
 import 'package:todo_app_ui/utils/device_height.dart';
 import 'package:todo_app_ui/utils/device_width.dart';
@@ -22,9 +23,11 @@ class FirstScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: deviceWidth(context) * .7,
+                width: deviceWidth(context) * .75,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
                   style: ElevatedButton.styleFrom(
                       primary: Color(0XFFFF535E),
                       padding: EdgeInsets.all(16),
@@ -36,16 +39,22 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              // FilledButtons(deviceWidth(context) * .75, EdgeInsets.all(16),
+              //     mainColor(), 'Sign up', (context) {
+              // return  Navigator.pushNamed(context, '/signup');
+              // }, 30.0, TextStyle(fontSize: 16, fontWeight: FontWeight.w900)),
               SizedBox(
                 height: 25,
                 width: deviceWidth(context),
               ),
               SizedBox(
-                width: deviceWidth(context) * .7,
+                width: deviceWidth(context) * .75,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signin');
+                  },
                   style: TextButton.styleFrom(
-                      padding: EdgeInsets.all(16),
+                      padding: EdgeInsets.all(14),
                       primary: Color(0XFFFF535E),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
@@ -55,6 +64,14 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              // CustomeTextButtons(
+              // EdgeInsets.all(14),
+              //   mainColor(),
+              //  'Log in',
+              //  (context){return Navigator.pushNamed(context, '/signin');},
+              //  30.0,
+              //   TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+              //  ),
               SizedBox(
                 height: deviceHeight(context) * .15,
               )
@@ -178,14 +195,14 @@ class FirstScreen extends StatelessWidget {
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(
                   Icons.check_box_outlined,
-                  size: 70,
+                  size: 65,
                   color: Colors.white,
                 ),
                 Text(
                   'lifetrack',
                   style: GoogleFonts.roboto(
                       textStyle: Theme.of(context).textTheme.displayMedium,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       color: Colors.white,
                       fontSize: 55),
                 )
@@ -214,4 +231,4 @@ child: Row(children: [
                     fontSize: 35),
               )
             ]),
-*/ 
+*/
