@@ -42,3 +42,23 @@ class CustomeContainer extends StatelessWidget {
     );
   }
 }
+
+class CustomeContainerOnboarding extends StatelessWidget {
+  late double width;
+  late double height;
+  late Widget child;
+  late Decoration? decoration;
+
+  CustomeContainerOnboarding(
+      {required this.width, required this.height, required this.child, this.decoration});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: decoration,
+      child: child,
+    );
+  }
+}

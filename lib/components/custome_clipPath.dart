@@ -26,3 +26,25 @@ class LifetrackClipper extends CustomClipper<Path> {
   }
 }
 
+class OnboardingClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.moveTo(0, size.height / 3.5);
+    path.lineTo(0, size.height);
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width, size.height / 3.5);
+    // path.lineTo(size.width / 1.3, size.height * 0);
+    path.quadraticBezierTo(size.width / 1.4, 0, size.width / 2.2, size.height*0.05);
+    // path.lineTo(size.width / 3, size.height / 14);
+    path.quadraticBezierTo(size.width / 3, size.height*0.05, 0, size.height / 3.5);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
+    throw UnimplementedError();
+  }
+}

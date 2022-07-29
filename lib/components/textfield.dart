@@ -6,13 +6,8 @@ class TextField1 extends StatelessWidget {
   late double width;
   late bool obscureText;
 
-  TextField1( hintText, width, padding, obscureText) {
- 
-    this.hintText = hintText;
-    this.padding = padding;
-    this.width = width;
-    this.obscureText = obscureText;
-  }
+  TextField1({required this.padding, required this.hintText, required this.width, required this.obscureText});
+
 
   @override
   Widget build(BuildContext context) {

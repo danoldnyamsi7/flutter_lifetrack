@@ -10,40 +10,36 @@ class FilledButtons extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color color;
   final String text;
-  final Function action;
+  final VoidCallback action;
   final double borderRadius;
   final TextStyle textStyle;
 
-  const FilledButtons(
-      {Key? key,
-      required this.x,
+  FilledButtons(
+      {required this.x,
       required this.padding,
       required this.color,
       required this.text,
       required this.action,
       required this.borderRadius,
-      required this.textStyle})
-      : super(key: key);
+      required this.textStyle});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        // width: deviceWidth(context) * .75,
-        width: x,
-        child: ElevatedButton(
-          onPressed: action(context),
-          style: ElevatedButton.styleFrom(
-              // primary: Color(0XFFFF535E),
-              primary: color,
-              // padding: EdgeInsets.all(16),
-              padding: padding,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(borderRadius))),
-          child: Text(
-            text,
-            style: textStyle,
-          ),
+    return SizedBox(
+      // width: deviceWidth(context) * .75,
+      width: x,
+      child: ElevatedButton(
+        onPressed: action,
+        style: ElevatedButton.styleFrom(
+            // primary: Color(0XFFFF535E),
+            primary: color,
+            // padding: EdgeInsets.all(16),
+            padding: padding,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius))),
+        child: Text(
+          text,
+          style: textStyle,
         ),
       ),
     );
@@ -56,33 +52,34 @@ class CustomeTextButtons extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color color;
   final String text;
-  final Function action;
+  final VoidCallback action;
   final double borderRadius;
   final TextStyle textStyle;
-  CustomeTextButtons(padding, color, text, action, borderRadius, textStyle) {
-    this.color = color;
-    this.padding = padding;
-    this.action = action;
-    this.borderRadius = borderRadius;
-    this.textStyle = textStyle;
-  }
+  final double x;
+
+  CustomeTextButtons(
+      {required this.padding,
+      required this.color,
+      required this.text,
+      required this.action,
+      required this.borderRadius,
+      required this.textStyle,
+      required this.x});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        // width: deviceWidth(context) * .75,
-        child: TextButton(
-          onPressed: action(context),
-          style: TextButton.styleFrom(
-              padding: padding,
-              primary: color,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(borderRadius))),
-          child: Text(
-            text,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
-          ),
+    return SizedBox(
+      width: x,
+      child: TextButton(
+        onPressed: action,
+        style: TextButton.styleFrom(
+            padding: padding,
+            primary: color,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius))),
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
         ),
       ),
     );

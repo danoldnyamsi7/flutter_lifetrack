@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app_ui/components/clipper_container.dart';
 import 'package:todo_app_ui/components/sign_btns.dart';
@@ -41,8 +42,11 @@ class Signup extends StatelessWidget {
                         SizedBox(
                           height: 4.0,
                         ),
-                        TextField1('Admin', deviceWidth(context) * .9,
-                            EdgeInsets.all(10.0), false),
+                        TextField1(
+                            hintText: 'Admin',
+                            width: deviceWidth(context) * .9,
+                            padding: EdgeInsets.all(10.0),
+                            obscureText: false),
                         SizedBox(
                           height: 12,
                         ),
@@ -56,10 +60,10 @@ class Signup extends StatelessWidget {
                           height: 4.0,
                         ),
                         TextField1(
-                            'danoldnyamsi7@gmail.com',
-                            deviceWidth(context) * .9,
-                            EdgeInsets.all(10.0),
-                            false),
+                            hintText: 'danoldnyamsi7@gmail.com',
+                            width: deviceWidth(context) * .9,
+                            padding: EdgeInsets.all(10.0),
+                            obscureText: false),
                         SizedBox(
                           height: 12,
                         ),
@@ -72,8 +76,11 @@ class Signup extends StatelessWidget {
                         SizedBox(
                           height: 4,
                         ),
-                        TextField1('***********', deviceWidth(context) * .9,
-                            EdgeInsets.all(10.0), true),
+                        TextField1(
+                            hintText: '***********',
+                            width: deviceWidth(context) * .9,
+                            padding: EdgeInsets.all(10.0),
+                            obscureText: true),
                         SizedBox(
                           height: 12,
                         ),
@@ -86,23 +93,50 @@ class Signup extends StatelessWidget {
                         SizedBox(
                           height: 4,
                         ),
-                        TextField1('***********', deviceWidth(context) * .9,
-                            EdgeInsets.all(10.0), true),
+                        TextField1(
+                            hintText: '***********',
+                            width: deviceWidth(context) * .9,
+                            padding: EdgeInsets.all(10.0),
+                            obscureText: true),
                       ],
                     )),
                 Container(
-                  margin: EdgeInsets.fromLTRB(5.0, 140.0, 5.0, 0),
+                  margin: EdgeInsets.fromLTRB(5.0, 120.0, 5.0, 0),
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       FilledButtons(
-                          deviceWidth(context) * .70,
-                          EdgeInsets.all(5.0),
-                          mainColor(),
-                          'Create Lietrack account', (context) {
-                         Navigator.pushNamed(context, '/get_started');
-                      }, 30.0, TextStyle(fontWeight: FontWeight.w500))
+                          x: deviceWidth(context) * .70,
+                          padding: EdgeInsets.all(15.0),
+                          color: mainColor(),
+                          text: 'Create Lietrack account',
+                          action: () {
+                            Navigator.pushNamed(context, '/get_started');
+                          },
+                          borderRadius: 30.0,
+                          textStyle: TextStyle(fontWeight: FontWeight.w600)),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                            text: 'Already using Lifetrack?',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: '  Log in',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0XFFFF535E)),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => {
+                                      Navigator.pushNamed(context, '/signin')
+                                    }),
+                            ]),
+                      )
                     ],
                   ),
                 )
