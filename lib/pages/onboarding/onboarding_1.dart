@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:todo_app_ui/components/clipper_container.dart';
 import 'package:todo_app_ui/components/custome_clipPath.dart';
 import 'package:todo_app_ui/components/sign_btns.dart';
@@ -16,9 +17,9 @@ class Onboarding_1 extends StatefulWidget {
 class _Onboarding_1State extends State<Onboarding_1> {
   int _currentStepIndex = 1;
   List<String> _imageList = [
-    '',
-    '',
-    ''
+    'assets/images/undraw_time_management_re_tk5w.svg',
+    'assets/images/undraw_project_completed_re_jr7u.svg',
+    'assets/images/undraw_scrum_board_re_wk7v.svg'
   ];
   List<String> textList = [
     'Save time and be productive by creating daily tasks.',
@@ -54,16 +55,16 @@ class _Onboarding_1State extends State<Onboarding_1> {
             // color: mainColor(),
 
             // length of the 2nd part
-
             // height: deviceHeight(context) * .9,
             child: Column(
               children: [
                 Container(
                   child: Container(
+                      // width: deviceWidth(context) * .8,
                       child: Center(
-                          child: Image(
-                              image: NetworkImage(
-                                  _imageList[_currentStepIndex - 1])))),
+                    child: SvgPicture.network(_imageList[_currentStepIndex - 1],
+                        width: deviceWidth(context)*.85, ),
+                  )),
                   // length of picture box
                   // color: Colors.black26,
                   height: deviceHeight(context) * .445,
@@ -81,18 +82,24 @@ class _Onboarding_1State extends State<Onboarding_1> {
                             height: deviceHeight(context) * .22,
                           ),
                           SizedBox(
+
                               width: deviceWidth(context),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15.0),
-                                child: Text(
-                                  textList[_currentStepIndex - 1],
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w800),
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 15),
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    width: deviceWidth(context)*.75,
+                                    child: Text(
+                                      textList[_currentStepIndex - 1],
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w800),
+                                          // textAlign: TextAlign.center,
+                                    ),
+                                  ),
                                 ),
-                              )),
+                              ),
                           SizedBox(
                             height: deviceHeight(context) * .1,
                           ),
@@ -104,9 +111,30 @@ class _Onboarding_1State extends State<Onboarding_1> {
                                     padding: EdgeInsets.all(15.0),
                                     color: Colors.white,
                                     text: 'Continue',
-                                    action: () {
-                                      Navigator.pushNamed(
-                                          context, '/tasks_list');
+                                    action: () async {
+                                      if ((_currentStepIndex >= 0) &&
+                                          (_currentStepIndex <=
+                                              textList.length - 2)) {
+                                        // _currentStepIndex + 1;
+                                        print(
+                                            'Continue to step: $_currentStepIndex');
+                                        setState(() {
+                                          _currentStepIndex++;
+                                        });
+                                      } else if (_currentStepIndex == 2) {
+                                        print(
+                                            'Continue to step: $_currentStepIndex');
+                                        setState(() {
+                                          _currentStepIndex++;
+                                        });
+
+                                        await Future.delayed(
+                                            Duration(seconds: 1));
+                                        Navigator.pushNamed(
+                                            context, '/tasks_list');
+                                      } else if (_currentStepIndex > 2) {
+                                        print('exeeded ${_currentStepIndex++}');
+                                      }
                                     },
                                     borderRadius: 30.0,
                                     textStyle: TextStyle(
@@ -120,8 +148,8 @@ class _Onboarding_1State extends State<Onboarding_1> {
                                   color: Colors.white,
                                   text: 'Skip',
                                   action: () {
-                                    print(
-                                        'pressed skip at: ${_currentStepIndex}');
+                                    print(Navigator.pushNamed(
+                                        context, '/tasks_list'));
                                   },
                                   borderRadius: 30,
                                   textStyle: TextStyle(
@@ -237,3 +265,27 @@ class _Onboarding_1State extends State<Onboarding_1> {
     );
   }
 }
+
+/*
+
+  OverlayFunc(BuildContext context){
+      OverlayState overlayState = Overlay.of(context);
+      OverlayEntry overlayEntry = OverlayEntry(
+        builder: (context)=> Positioned(
+          top: ,
+          bottom: ,
+          left: ,
+          right: ,
+          child: ,
+        ),
+        maintainState: ,
+        opaque: ,
+      )
+
+      overlayState.insert(overlayEntry)
+  }
+
+*/
+
+/// to do
+/// add overlay to make it

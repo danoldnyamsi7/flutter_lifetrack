@@ -35,9 +35,11 @@ class OnboardingClipper extends CustomClipper<Path> {
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, size.height / 3.5);
     // path.lineTo(size.width / 1.3, size.height * 0);
-    path.quadraticBezierTo(size.width / 1.4, 0, size.width / 2.2, size.height*0.05);
+    path.quadraticBezierTo(
+        size.width / 1.4, 0, size.width / 2.2, size.height * 0.05);
     // path.lineTo(size.width / 3, size.height / 14);
-    path.quadraticBezierTo(size.width / 3, size.height*0.05, 0, size.height / 3.5);
+    path.quadraticBezierTo(
+        size.width / 3, size.height * 0.05, 0, size.height / 3.5);
     path.close();
     return path;
   }
@@ -45,6 +47,6 @@ class OnboardingClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
     // TODO: implement shouldReclip
-    throw UnimplementedError();
+    return false;
   }
 }
