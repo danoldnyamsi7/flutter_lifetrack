@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^3.0.1
   step_progress_indicator: ^1.0.2
   flutter_svg: ^1.1.1+1
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:
