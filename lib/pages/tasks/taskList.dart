@@ -418,76 +418,168 @@ class WeekList extends StatelessWidget {
 }
 
 void createTaskModal(context) {
+  DateTime date = DateTime(2022, 08, 19);
+
   showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) => Container(
-            height: deviceHeight(context) * .4,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25))),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: deviceHeight(context) * .01,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: deviceWidth(context) * .18,
-                      height: deviceHeight(context) * .005,
-                      child: Container(color: Colors.grey),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: deviceHeight(context) * .01,
-                ),
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+      builder: (context) => SingleChildScrollView(
+            child: Container(
+              height: deviceHeight(context) * .4,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25))),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: deviceHeight(context) * .01,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Task',
-                        style: TextStyle(
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w800,
-                            color: Color.fromARGB(255, 184, 179, 179)),
-                      ),
                       SizedBox(
-                        height: 2.0,
-                      ),
-                      TextField1(
-                          padding: EdgeInsets.all(10.0),
-                          hintText: 'Task name',
-                          width: deviceWidth(context) * .75,
-                          obscureText: false)
+                        width: deviceWidth(context) * .18,
+                        height: deviceHeight(context) * .005,
+                        child: Container(color: Colors.grey),
+                      )
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: deviceHeight(context) * .005,
-                ),
-                Container(
-                  child: Row(children: [Column(), Column()]),
-                ),
-                FilledButtons(
-                    x: deviceWidth(context) * .75,
-                    padding: EdgeInsets.all(15.0),
-                    color: Colors.green,
-                    text: 'Add new task',
-                    action: () {
-                      AlertDialog(
-                        content: Text('new task added ;)'),
-                      );
-                    },
-                    borderRadius: 5.0,
-                    textStyle: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w900)),
-              ],
+                  SizedBox(
+                    height: deviceHeight(context) * .01,
+                  ),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Task',
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w800,
+                              color: Color.fromARGB(255, 184, 179, 179)),
+                        ),
+                        SizedBox(
+                          height: 2.0,
+                        ),
+                        TextField1(
+                            padding: EdgeInsets.all(10.0),
+                            hintText: 'Task name',
+                            width: deviceWidth(context) * .75,
+                            obscureText: false)
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: deviceHeight(context) * .005,
+                  ),
+                  Container(
+                    width: deviceWidth(context)*.75,
+                    margin: EdgeInsets.fromLTRB(60.0, 30.0, 60.0, 60.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                            Text(
+                              'Due date',
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.w800,
+                                  color: Color.fromARGB(255, 184, 179, 179)),
+                            ),
+                            SizedBox(
+                              height: 2.0,
+                            ),
+                            Container(
+                              height: deviceHeight(context) * .05,
+                              width: deviceWidth(context) * .32,
+                              padding: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.0, color: Colors.grey),
+                                       borderRadius: BorderRadius.circular(5.0)),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                        '${date.year}.${date.month}.${date.day}',style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),),
+                                    // SizedBox(width: deviceWidth(context) * .035),
+                                    GestureDetector(
+                                        onTap: () async{
+                                          // show calendar picker
+                                          await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTIme(DateTIme.now()), lastDate: lastDate)
+                                          print('select date bro!');
+                                        },
+                                        child:
+                                            const Icon(Icons.calendar_month)),
+                                  ]),
+                            ),
+                          ]),
+                          
+                          SizedBox(width: deviceWidth(context)*.04,),
+
+                          
+                          // two
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                            Text(
+                              'Repeat',
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.w800,
+                                  color: Color.fromARGB(255, 184, 179, 179)),
+                            ),
+                            SizedBox(
+                              height: 2.0,
+                            ),
+                            Container(
+                              height: deviceHeight(context) * .05,
+                              width: deviceWidth(context) * .32,
+                              padding: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 2.0, color: Color.fromARGB(255, 192, 189, 189)), 
+                                      borderRadius: BorderRadius.circular(5.0)),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                        'Everyday', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),),
+                                    // SizedBox(width: deviceWidth(context) * .035),
+                                    GestureDetector(
+                                        onTap: () {
+                                          // show calendar picker
+                                          print('select repeat bro!');
+                                        },
+                                        child:
+                                            const Icon(Icons.calendar_month)),
+                                  ]),
+                            ),
+                          ]),
+                        ]),
+                  ),
+                  FilledButtons(
+                      x: deviceWidth(context) * .75,
+                      padding: EdgeInsets.all(15.0),
+                      color: Colors.green,
+                      text: 'Add new task',
+                      action: () {
+                        AlertDialog(
+                          content: Text('new task added ;)'),
+                        );
+                      },
+                      borderRadius: 5.0,
+                      textStyle: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w900)),
+                ],
+              ),
             ),
           ));
 }
