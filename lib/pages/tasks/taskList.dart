@@ -511,7 +511,7 @@ void createTaskModal(context) {
                                     GestureDetector(
                                         onTap: () async{
                                           // show calendar picker
-                                          await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTIme(DateTIme.now()), lastDate: lastDate)
+                                          await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(DateTime.now().year - 5), lastDate: DateTime(DateTime.now()));
                                           print('select date bro!');
                                         },
                                         child:
