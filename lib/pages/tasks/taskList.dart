@@ -8,23 +8,46 @@ import 'package:todo_app_ui/utils/device_width.dart';
 
 // import 'dart:math' as math;
 
-class TasksList extends StatelessWidget {
+class TasksList extends StatefulWidget {
   const TasksList({Key? key}) : super(key: key);
 
   @override
+  State<TasksList> createState() => _TasksListState();
+}
+
+class _TasksListState extends State<TasksList> {
+  DateTime date = DateTime(2022, 08, 19);
+
+  @override
   Widget build(BuildContext context) {
-    bool isCLicked = false;
+    showCalendar() async {
+      var newDate = await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime(DateTime.now().year - 5),
+          lastDate: DateTime(DateTime.now().year + 5));
+
+      if (newDate == null) {
+        var formatDate = '${newDate?.year},${newDate?.month},${newDate?.day}';
+        setState(() {
+          date = DateTime.parse(formatDate);
+        });
+        print('date is now: ${date}');
+      } else {
+        return 'You did not choose a date!';
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mainColor(),
-        leading: Icon(Icons.menu),
+        leading: const Icon(Icons.menu),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           createTaskModal(context);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         backgroundColor: mainColor(),
       ),
       body: SingleChildScrollView(
@@ -32,11 +55,12 @@ class TasksList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 24.0, horizontal: 15.0),
+              margin:
+                  const EdgeInsets.symmetric(vertical: 24.0, horizontal: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     '19 Aug, Monday',
                     style:
                         TextStyle(fontWeight: FontWeight.w900, fontSize: 17.0),
@@ -44,7 +68,7 @@ class TasksList extends StatelessWidget {
                   SizedBox(
                     height: deviceHeight(context) * .007,
                   ),
-                  Text(
+                  const Text(
                     'Your tasks for the week',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
@@ -54,37 +78,37 @@ class TasksList extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30.0,
             ),
             Container(
-                color: Color.fromARGB(255, 238, 236, 236),
+                color: const Color.fromARGB(255, 238, 236, 236),
                 width: deviceWidth(context) * .95,
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                child: TodayList()
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child: const TodayList()
                 // dropdown section.
                 ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Container(
-                color: Color.fromARGB(255, 238, 236, 236),
+                color: const Color.fromARGB(255, 238, 236, 236),
                 width: deviceWidth(context) * .95,
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                child: TomorrowList()
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child: const TomorrowList()
                 // dropdown section.
                 ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Container(
-                color: Color.fromARGB(255, 238, 236, 236),
+                color: const Color.fromARGB(255, 238, 236, 236),
                 width: deviceWidth(context) * .95,
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                child: WeekList()
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child: const WeekList()
                 // dropdown section.
                 ),
-            SizedBox(
+            const SizedBox(
               height: 15.0,
             ),
           ],
@@ -94,7 +118,14 @@ class TasksList extends StatelessWidget {
   }
 }
 
-class TodayList extends StatelessWidget {
+class TodayList extends StatefulWidget {
+  const TodayList({Key? key}) : super(key: key);
+
+  @override
+  State<TodayList> createState() => _TodayListState();
+}
+
+class _TodayListState extends State<TodayList> {
   @override
   Widget build(BuildContext context) {
     bool isComplete = false;
@@ -206,7 +237,14 @@ class TodayList extends StatelessWidget {
   }
 }
 
-class TomorrowList extends StatelessWidget {
+class TomorrowList extends StatefulWidget {
+  const TomorrowList({Key? key}) : super(key: key);
+
+  @override
+  State<TomorrowList> createState() => _TomorrowListState();
+}
+
+class _TomorrowListState extends State<TomorrowList> {
   @override
   Widget build(BuildContext context) {
     bool isClicked = false;
@@ -310,7 +348,14 @@ class TomorrowList extends StatelessWidget {
   }
 }
 
-class WeekList extends StatelessWidget {
+class WeekList extends StatefulWidget {
+  const WeekList({Key? key}) : super(key: key);
+
+  @override
+  State<WeekList> createState() => _WeekListState();
+}
+
+class _WeekListState extends State<WeekList> {
   @override
   Widget build(BuildContext context) {
     bool isClicked = false;
@@ -418,15 +463,14 @@ class WeekList extends StatelessWidget {
 }
 
 void createTaskModal(context) {
-  DateTime date = DateTime(2022, 08, 19);
-
+   
   showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
       builder: (context) => SingleChildScrollView(
             child: Container(
               height: deviceHeight(context) * .4,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(25),
@@ -453,18 +497,18 @@ void createTaskModal(context) {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Task',
                           style: TextStyle(
                               fontSize: 12.0,
                               fontWeight: FontWeight.w800,
                               color: Color.fromARGB(255, 184, 179, 179)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 2.0,
                         ),
                         TextField1(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             hintText: 'Task name',
                             width: deviceWidth(context) * .75,
                             obscureText: false)
@@ -475,108 +519,121 @@ void createTaskModal(context) {
                     height: deviceHeight(context) * .005,
                   ),
                   Container(
-                    width: deviceWidth(context)*.75,
-                    margin: EdgeInsets.fromLTRB(60.0, 30.0, 60.0, 60.0),
+                    width: deviceWidth(context) * .75,
+                    margin: const EdgeInsets.fromLTRB(60.0, 30.0, 60.0, 60.0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                            Text(
-                              'Due date',
-                              style: TextStyle(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w800,
-                                  color: Color.fromARGB(255, 184, 179, 179)),
-                            ),
-                            SizedBox(
-                              height: 2.0,
-                            ),
-                            Container(
-                              height: deviceHeight(context) * .05,
-                              width: deviceWidth(context) * .32,
-                              padding: EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.0, color: Colors.grey),
-                                       borderRadius: BorderRadius.circular(5.0)),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                        '${date.year}.${date.month}.${date.day}',style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),),
-                                    // SizedBox(width: deviceWidth(context) * .035),
-                                    GestureDetector(
-                                        onTap: () async{
-                                          // show calendar picker
-                                          // await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(DateTime.now().year-5), lastDate: DateTime(DateTime.now().year+5));
-                                          print('select date bro!');
-                                        },
-                                        child:
-                                            const Icon(Icons.calendar_month)),
-                                  ]),
-                            ),
-                          ]),
-                          
-                          SizedBox(width: deviceWidth(context)*.04,),
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Due date',
+                                  style: TextStyle(
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.w800,
+                                      color:
+                                          Color.fromARGB(255, 184, 179, 179)),
+                                ),
+                                const SizedBox(
+                                  height: 2.0,
+                                ),
+                                Container(
+                                  height: deviceHeight(context) * .05,
+                                  width: deviceWidth(context) * .32,
+                                  padding: const EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1.0, color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5.0)),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        const Text(
+                                          '',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        // SizedBox(width: deviceWidth(context) * .035),
+                                        GestureDetector(
+                                            onTap: () async {
+                                              // print('select date bro!');
+                                              
+                                            },
+                                            child: const Icon(
+                                                Icons.calendar_month)),
+                                      ]),
+                                ),
+                              ]),
 
-                          
+                          SizedBox(
+                            width: deviceWidth(context) * .04,
+                          ),
+
                           // two
 
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                            Text(
-                              'Repeat',
-                              style: TextStyle(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w800,
-                                  color: Color.fromARGB(255, 184, 179, 179)),
-                            ),
-                            SizedBox(
-                              height: 2.0,
-                            ),
-                            Container(
-                              height: deviceHeight(context) * .05,
-                              width: deviceWidth(context) * .32,
-                              padding: EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 2.0, color: Color.fromARGB(255, 192, 189, 189)), 
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Repeat',
+                                  style: TextStyle(
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.w800,
+                                      color:
+                                          Color.fromARGB(255, 184, 179, 179)),
+                                ),
+                                const SizedBox(
+                                  height: 2.0,
+                                ),
+                                Container(
+                                  height: deviceHeight(context) * .05,
+                                  width: deviceWidth(context) * .32,
+                                  padding: const EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 2.0,
+                                          color: const Color.fromARGB(
+                                              255, 192, 189, 189)),
                                       borderRadius: BorderRadius.circular(5.0)),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                        'Everyday', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),),
-                                    // SizedBox(width: deviceWidth(context) * .035),
-                                    GestureDetector(
-                                        onTap: () {
-                                          // show calendar picker
-                                          print('select repeat bro!');
-                                        },
-                                        child:
-                                            const Icon(Icons.calendar_month)),
-                                  ]),
-                            ),
-                          ]),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          'Everyday',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        // SizedBox(width: deviceWidth(context) * .035),
+                                        GestureDetector(
+                                            onTap: () {
+                                              // show calendar picker
+
+                                              print('select repeat bro!');
+                                            },
+                                            child: const Icon(
+                                                Icons.calendar_month)),
+                                      ]),
+                                ),
+                              ]),
                         ]),
                   ),
                   FilledButtons(
                       x: deviceWidth(context) * .75,
-                      padding: EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(15.0),
                       color: Colors.green,
                       text: 'Add new task',
                       action: () {
-                        AlertDialog(
+                        const AlertDialog(
                           content: Text('new task added ;)'),
                         );
                       },
                       borderRadius: 5.0,
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w900)),
                 ],
               ),
