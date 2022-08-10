@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+// import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo_app_ui/model/task.dart';
 import 'package:todo_app_ui/pages/forms/signin.dart';
 import 'package:todo_app_ui/pages/forms/signup.dart';
 import 'package:todo_app_ui/pages/get_started/getStarted.dart';
@@ -9,7 +12,11 @@ import 'package:todo_app_ui/pages/onboarding/onboarding_3.dart';
 import 'package:todo_app_ui/pages/tasks/createTask.dart';
 import 'package:todo_app_ui/pages/tasks/taskList.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(TasksAdapter());
+  Hive.openBox<Tasks>('tasks');
   runApp(MyApp());
 }
 

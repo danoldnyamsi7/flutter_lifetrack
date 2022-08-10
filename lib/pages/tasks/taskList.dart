@@ -1,7 +1,9 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:todo_app_ui/components/sign_btns.dart';
 import 'package:todo_app_ui/components/textfield.dart';
+import 'package:todo_app_ui/model/task.dart';
 import 'package:todo_app_ui/utils/bgcolor.dart';
 import 'package:todo_app_ui/utils/device_height.dart';
 import 'package:todo_app_ui/utils/device_width.dart';
@@ -16,7 +18,8 @@ class TasksList extends StatefulWidget {
 }
 
 class _TasksListState extends State<TasksList> {
-  DateTime date = DateTime(2022, 08, 19);
+  DateTime date = DateTime.now();
+  List<Tasks> tasks = [];
 
   @override
   Widget build(BuildContext context) {
@@ -167,71 +170,28 @@ class _TodayListState extends State<TodayList> {
                     BoxDecoration(borderRadius: BorderRadius.circular(30)),
                 child: const LinearProgressIndicator(
                   backgroundColor: Color.fromARGB(255, 219, 210, 210),
-                  value: 0.3,
+                  value: 0,
                   valueColor: AlwaysStoppedAnimation(Color(0XFFFFF535E)),
                 ),
               ),
             ),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => {},
-                      child: Checkbox(
-                        value: isComplete,
-                        onChanged: (value) => {isComplete = !isComplete},
-                      ),
-                    ),
-                    const Text('Task1'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isComplete,
-                        onChanged: (value) => {isComplete = !isComplete}),
-                    const Text('Task2'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isComplete,
-                        onChanged: (value) => {isComplete = !isComplete}),
-                    const Text('Task3'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isComplete,
-                        onChanged: (value) => {isComplete = !isComplete}),
-                    const Text('Task1'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: true,
-                        onChanged: (value) => {isComplete = !isComplete}),
-                    const Text('Task2',
-                        style:
-                            TextStyle(decoration: TextDecoration.lineThrough)),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: true,
-                        onChanged: (value) => {isComplete == !isComplete}),
-                    const Text('Task3',
-                        style:
-                            TextStyle(decoration: TextDecoration.lineThrough)),
-                  ],
-                ),
-              ],
-            ),
+            // Column(
+            //   children: [
+            //     Row(
+            //       children: [
+            //         GestureDetector(
+            //           onTap: () => {},
+            //           child: Checkbox(
+            //             value: isComplete,
+            //             onChanged: (value) => {isComplete = !isComplete},
+            //           ),
+            //         ),
+                 
+            //       ],
+            //     ),
+               
+            //   ],
+            // ),
           ],
         ));
   }
@@ -293,54 +253,7 @@ class _TomorrowListState extends State<TomorrowList> {
             ),
             Column(
               children: [
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task1'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task2'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task3'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task1'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: true,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task2'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: true,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task3'),
-                  ],
-                ),
+               
               ],
             ),
           ],
@@ -398,63 +311,14 @@ class _WeekListState extends State<WeekList> {
                     BoxDecoration(borderRadius: BorderRadius.circular(30)),
                 child: const LinearProgressIndicator(
                   backgroundColor: Color.fromARGB(255, 219, 210, 210),
-                  value: 0.1,
+                  value: 0,
                   valueColor: AlwaysStoppedAnimation(Color(0XFFFFF535E)),
                 ),
               ),
             ),
             Column(
               children: [
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task1'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked == !isClicked}),
-                    const Text('Task2'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task3'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: isClicked,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task1'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: true,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text('Task2'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: true,
-                        onChanged: (value) => {isClicked = !isClicked}),
-                    const Text(
-                      'Task3',
-                    ),
-                  ],
-                ),
+               
               ],
             ),
           ],
@@ -463,9 +327,7 @@ class _WeekListState extends State<WeekList> {
 }
 
 void createTaskModal(context) {
-
   DateTime date = DateTime.now();
-
 
   showModalBottomSheet(
       backgroundColor: Colors.transparent,
@@ -572,7 +434,6 @@ void createTaskModal(context) {
                                                 // SizedBox(width: deviceWidth(context) * .035),
                                                 GestureDetector(
                                                     onTap: () async {
-                                                
                                                       // show calendar picker
                                                       DateTime? selectedDate =
                                                           await showDatePicker(
@@ -596,9 +457,13 @@ void createTaskModal(context) {
                                                                   selectedDate
                                                             });
                                                       } else {
-                                                        AlertDialog(content: Container(child: Text('Please set a deadline'),),);
+                                                        AlertDialog(
+                                                          content: Container(
+                                                            child: Text(
+                                                                'Please set a deadline'),
+                                                          ),
+                                                        );
                                                       }
-                                                    
                                                     },
                                                     child: const Icon(
                                                         Icons.calendar_month)),
@@ -652,33 +517,6 @@ void createTaskModal(context) {
                                                 ),
                                                 // SizedBox(width: deviceWidth(context) * .035),
                                                 GestureDetector(
-                                                    // onTap: () async {
-                                                    //   // show calendar picker
-                                                    //   DateTime? selectedDate =
-                                                    //       await showDatePicker(
-                                                    //           context: context,
-                                                    //           initialDate:
-                                                    //               DateTime
-                                                    //                   .now(),
-                                                    //           firstDate: DateTime(
-                                                    //               DateTime.now()
-                                                    //                       .year -
-                                                    //                   5),
-                                                    //           lastDate: DateTime(
-                                                    //               DateTime.now()
-                                                    //                       .year +
-                                                    //                   5));
-
-                                                    //   if (selectedDate !=
-                                                    //       null) {
-                                                    //     setState(() => {
-                                                    //           date =
-                                                    //               selectedDate
-                                                    //         });
-                                                    //   } else {
-                                                    //     AlertDialog(content: Container(child: Text('Please set a deadline'),),);
-                                                    //   }
-                                                    // },
                                                     child: const Icon(
                                                         Icons.calendar_month)),
                                               ]),

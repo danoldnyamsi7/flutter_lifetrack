@@ -1,0 +1,5 @@
+enum TaskStatus {
+  processing,
+  completed
+}
+
