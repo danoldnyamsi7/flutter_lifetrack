@@ -19,6 +19,6 @@ class Tasks extends HiveObject {
   late DateTime? updatedDate;
 
   @HiveField(4)
-  late TaskStatus status;
+  late String status;
   Tasks({required this.title, required this.createdDate, required this.dueDate, required this.status, this.updatedDate });
 }

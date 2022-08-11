@@ -44,7 +44,7 @@ class _TasksListState extends State<TasksList> {
       DateTime dueDate,
     ) {
 
-      TaskStatus status = TaskStatus.processing;
+      String status = TaskStatus.processing.toString();
       final newTask = Tasks(
           title: title,
           createdDate: createdDate,

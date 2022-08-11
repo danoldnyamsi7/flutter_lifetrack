@@ -20,7 +20,7 @@ class TasksAdapter extends TypeAdapter<Tasks> {
       title: fields[0] as String,
       createdDate: fields[1] as DateTime,
       dueDate: fields[2] as DateTime,
-      status: fields[4] as Enum,
+      status: fields[4] as String,
       updatedDate: fields[3] as DateTime?,
     );
   }
