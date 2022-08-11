@@ -1,6 +1,8 @@
 import 'package:hive/hive.dart';
+import 'package:todo_app_ui/utils/enums.dart';
 
 part 'task.g.dart';
+
 
 @HiveType(typeId: 0)
 class Tasks extends HiveObject {
@@ -17,7 +19,6 @@ class Tasks extends HiveObject {
   late DateTime? updatedDate;
 
   @HiveField(4)
-  late Enum status;
-
-  Tasks({required this.title, required this.createdDate,  required this.dueDate, required this.status, this.updatedDate });
+  late TaskStatus status;
+  Tasks({required this.title, required this.createdDate, required this.dueDate, required this.status, this.updatedDate });
 }

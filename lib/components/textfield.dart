@@ -5,18 +5,20 @@ class TextField1 extends StatelessWidget {
   late String hintText;
   late double width;
   late bool obscureText;
+  late final onChange;
 
   TextField1(
       {required this.padding,
       required this.hintText,
       required this.width,
-      required this.obscureText});
+      required this.obscureText, this.onChange});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       child: TextField(
+        onChanged: onChange,
         obscureText: obscureText,
         decoration: InputDecoration(
           hintStyle:
@@ -25,6 +27,7 @@ class TextField1 extends StatelessWidget {
           border: OutlineInputBorder(borderSide: BorderSide(width: 5)),
           // labelText: labelText,
           hintText: hintText,
+          
         ),
       ),
     );
